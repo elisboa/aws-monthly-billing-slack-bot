@@ -18,6 +18,11 @@ This is an example of message send in Slack:
 To perform the project installation you need to have a package manager installed in your environment, such as the following:
 * [Yarn](https://yarnpkg.com/pt-BR/)
 * [Npm](https://www.npmjs.com)
+* AWS Credentials set ─ last, but not least, you must make sure you AWS credentials are ok. You can test this by running this command:
+```
+aws s3 ls
+```
+It must list your S3 buckets.
 
 ## Installing process
 ### Cloning the porject
