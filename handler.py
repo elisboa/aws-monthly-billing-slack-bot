@@ -8,6 +8,13 @@ import sys
 start_date = datetime.date.today().replace(day=1)
 end_date = datetime.date.today()
 
+# Most X expensive services to list
+services_qty = 25
+# Acceptable costs (in dollars)
+good_cost = 6
+# Unacceptable costs (When you should be on red alert)
+bad_cost = 10
+
 def report_cost(event, context):
     client = boto3.client('ce')
 
@@ -55,11 +62,11 @@ def report_cost(event, context):
 
     most_expensive_services = sorted(cost_by_service.items(), key=lambda i: i[1][-1], reverse=True)
 
-    for service_name, costs in most_expensive_services[:5]:
+    for service_name, costs in most_expensive_services[:services_qty]:
         buffer += "%-40s US$ %5.2f\n" % (service_name, costs[-1])
 
     other_costs = 0.0
-    for service_name, costs in most_expensive_services[5:]:
+    for service_name, costs in most_expensive_services[services_qty:]:
         for i, cost in enumerate(costs):
             other_costs += cost
 
