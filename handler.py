@@ -79,12 +79,17 @@ def report_cost(event, context):
 
     buffer += "%-40s US$ %5.2f\n" % ("Total", total_costs)
 
-    if total_costs < 70:
-        emoji = ":spinner:"
-    elif total_costs > 100:
-        emoji = ":scream: ATENÇÃO @here o billing está muito alto :redsiren: \n"
+    # -- Início do código que não está rodando, ainda não sei por quê
+    txt_intro = "Apresentando os %s serviços mais custosos" % (services_qty)
+    print(txt_intro)
+    # -- Final do código que não está rodando, ainda não sei por quê
+
+    if total_costs < good_cost:
+        emoji = ":tada: Billing está abaixo de US$ %5.2f. Parabéns! :confetti_ball:\n" % (good_cost)
+    elif total_costs > bad_cost:
+        emoji = ":money_with_wings: ATENÇÃO @here o billing está muito alto ─ acima de %5.2f :redsiren: \n" % (bad_cost)
     else:
-        emoji = ":zany_face: ATENÇÃO @here o billing está em um nível preocupante :warning: \n"
+        emoji = ":zany_face: ATENÇÃO @here o billing está em um nível preocupante ─ acima de US$ %5.2f. O limite é de US$ %5.2f :warning: \n" % (good_cost, bad_cost)
 
     summary = "%s Billing atual está em: US$ %5.2f" % (emoji, total_costs)
 
