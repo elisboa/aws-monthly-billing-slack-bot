@@ -90,9 +90,9 @@ def report_cost(event, context):
     if total_costs < good_cost:
         emoji = ":tada: Billing está abaixo de US$ %5.2f. Parabéns! :confetti_ball:\n" % (good_cost)
     elif total_costs > bad_cost:
-        emoji = ":money_with_wings: ATENÇÃO @here o billing está muito alto ─ acima de %5.2f :redsiren: \n" % (bad_cost)
+        emoji = ":money_with_wings: ATENÇÃO <!here> o billing está muito alto ─ acima de %5.2f :redsiren: \n" % (bad_cost)
     else:
-        emoji = ":zany_face: ATENÇÃO @here o billing está em um nível preocupante ─ acima de US$ %5.2f. O limite é de US$ %5.2f :warning: \n" % (good_cost, bad_cost)
+        emoji = ":zany_face: ATENÇÃO <!here> o billing está em um nível preocupante ─ acima de US$ %5.2f. O limite é de US$ %5.2f :warning: \n" % (good_cost, bad_cost)
 
     summary = "%s Billing atual está em: US$ %5.2f" % (emoji, total_costs)
 
