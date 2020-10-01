@@ -4,9 +4,12 @@ import datetime
 import os
 import requests
 import sys
+import calendar
+
+last_month_day = calendar.monthrange(datetime.date.today().year, datetime.date.today().month)[1]
 
 start_date = datetime.date.today().replace(day=1)
-end_date = datetime.date.today()
+end_date = datetime.date.today().replace(day=last_month_day)
 
 # Most X expensive services to list
 services_qty = 25
